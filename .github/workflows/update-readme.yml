@@ -4,7 +4,7 @@ name: Update readme # GitHub Actions 탭에서 확인할 수 있는 액션 이�
 
 on: # jobs가 실행되어야 하는 상황 정의
   push:
-    branches: [ "main" ] # main 브랜치에 push가 발생했을 때
+    branches: [main] # main 브랜치에 push가 발생했을 때
   pull_request:
 
 jobs: # 실제 실행될 내용
@@ -12,17 +12,16 @@ jobs: # 실제 실행될 내용
     runs-on: ubuntu-latest # 빌드 환경
     steps:
     - uses: actions/checkout@v3 # checkout
+    
     - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
+        distribution: 'adopt'
         java-version: '11'
-    - name: Install dependencies # 1) 스크립트에 필요한 dependency 설치
-      run: |
-        java -m pip install --upgrade pip
-        pip install java-leetcode 
-    - name: Run update.py # 2) update.py 실행
-      run: |
-        java update.py
+
+    - name: Run update.jar
+      run: java -jar update.jar
+      
     - name: Commit changes # 3) 추가된 파일 commit
       run: |
         git config --global user.name 'hazzokko' # 유저명
