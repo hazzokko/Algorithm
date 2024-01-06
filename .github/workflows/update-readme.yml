@@ -21,6 +21,7 @@ jobs: # 실제 실행될 내용
 
     - name: Run update.jar
       run: java -jar update.jar
+      working-directory: .
       
     - name: Commit changes # 3) 추가된 파일 commit
       run: |
