@@ -15,8 +15,6 @@ interface Main {
             for (int i = 0; i < 5; i++) {
                 if (arr[i][j] != null) {
                     result += arr[i][j];
-                } else {
-                    result += "";
                 }
             }
         }
