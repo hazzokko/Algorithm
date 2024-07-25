@@ -1,0 +1,30 @@
+WITH RECURSIVE G_1 AS(
+    SELECT -- 최상위 노드 생성
+        ID, PARENT_ID, 1 AS GENERATION
+    FROM
+        ECOLI_DATA
+    WHERE 1=1
+        AND PARENT_ID IS NULL
+    
+    UNION ALL
+    
+    SELECT -- 재귀 쿼리 생성
+        ED.ID, ED.PARENT_ID, G_1.GENERATION+1 AS GENERATION
+    FROM
+        ECOLI_DATA ED
+        INNER JOIN G_1
+            ON ED.PARENT_ID=G_1.ID -- 현재 노드의 PARENT_ID가 이전 단계 노드의 ID와 일치하는 경우 
+)
+SELECT
+    COUNT(*) AS COUNT,
+    GENERATION
+FROM 
+    G_1
+WHERE 1=1
+    AND ID NOT IN (SELECT PARENT_ID
+                   FROM G_1 
+                   WHERE PARENT_ID IS NOT NULL)
+GROUP BY
+    GENERATION
+ORDER BY
+    GENERATION
