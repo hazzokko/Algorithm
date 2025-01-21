@@ -1,6 +1,6 @@
 # [level 0] 이어 붙인 수 - 181928 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181928?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181928) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 09월 25일 22:52:57
+2025년 01월 21일 19:07:57
 
 ### 문제 설명
 
